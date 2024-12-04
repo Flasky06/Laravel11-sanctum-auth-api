@@ -31,9 +31,9 @@ Follow the steps below to set up the Laravel 11 Sanctum API on your local machin
 3. Environment Configuration
 
     - Create a .env file by copying the .env.example file:
-      cp .env.example .env
+      `cp .env.example .env`
     - Generate the application key:
-      php artisan key:generate
+      `php artisan key:generate`
     - Set up your database connection in the .env file. For example:
       env
       DB_CONNECTION=mysql
@@ -48,27 +48,28 @@ Follow the steps below to set up the Laravel 11 Sanctum API on your local machin
 -   Run the database migrations to create the necessary tables:
     `php artisan migrate`
 
-5. Install Sanctum
-   Sanctum is already included in the dependencies, but you need to set it up. Run the following command to publish the Sanctum configuration:
-   php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
-   Then, run the Sanctum migration:
-   `php artisan migrate`
+5.  Install Sanctum
+    Sanctum is already included in the dependencies, but you need to set it up. Run the following command to publish the Sanctum configuration:
+    php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
+    Then, run the Sanctum migration:
+    `php artisan migrate`
 
-6. Set Up Sanctum Middleware
+6.  Set Up Sanctum Middleware
 
-    - In the app/Http/Kernel.php file, make sure the Sanctum middleware is added to the api middleware group:
-      `'api' => [
-\Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
-'throttle:api',
-\Illuminate\Routing\Middleware\SubstituteBindings::class,
-],`
+        - In the app/Http/Kernel.php file, make sure the Sanctum middleware is added to the api middleware group:
+          `'api' => [
 
-7. Testing the API
+    \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+    'throttle:api',
+    \Illuminate\Routing\Middleware\SubstituteBindings::class,
+    ],`
+
+7.  Testing the API
 
     - Once everything is set up, you can start the Laravel development server:
       `php artisan serve`
 
-8. Endpoints
+8.  Endpoints
     - Below are the available API endpoints for the project.
 
 User Registration - Endpoint: POST /api/register - Description: Register a new user by providing name, email, and password. - Request Body:
